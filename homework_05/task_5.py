@@ -4,7 +4,6 @@
 list1 = [9, 3, 0, 11, 6, 3, 14, 23, 23, 5, 8, 7, 6, 11, 1, 3, 23]
 new_list = []
 for i in list1:
-    c = list1.count(i)
-    if c == 1:
+    if i not in new_list:
         new_list.append(i)
-print('Неповторяющиеся числа: ', new_list)
+print(f'Неповторяющиеся числа: {new_list}')

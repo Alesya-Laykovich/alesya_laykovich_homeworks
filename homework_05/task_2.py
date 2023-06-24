@@ -9,5 +9,5 @@ for i in list_new:
         list1 += [i]
     else:
         list2 += [i]
-print('Количество четных элементов: ', len(list1))
-print('Количество нечетных элементов: ', len(list2))
+print(f'Количество четных элементов: {len(list1)}')
+print(f'Количество нечетных элементов: {len(list2)}')
