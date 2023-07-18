@@ -2,12 +2,7 @@
 # определить количество в ней символов.
 
 with open('task_01_1.txt', 'r') as file:
-    new_file1 = file.read()
-    for i in new_file1:
-        lines = new_file1.count(i)
-    print(f'Количество строк: {lines}')
-
-with open('task_01_1.txt', 'r') as file:
     new_file2 = file.readlines()
+    print(f'Количество строк: {len(new_file2)}')
     for i in new_file2:
         print(f'Количество символов: {len(i)}')
