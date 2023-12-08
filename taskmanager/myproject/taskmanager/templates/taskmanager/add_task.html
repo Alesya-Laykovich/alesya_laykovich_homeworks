@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Добавление задачи
+{% endblock %}
+
+
+
+{% block content %}
+<h1>Добавить задачу</h1>
+
+<form action="{% url 'add_task' %}" method="post">
+    {% csrf_token %}
+    <div class="col-md-8">
+        <div class="mb-3">
+            {{ form.as_p }}
+        </div>
+    </div>
+
+{% comment %}
+
+<form action="{% url 'add_task' %}" method="post">
+    {% csrf_token %}
+    {{form.non_field.errors }}
+    <div class="col-md-8">
+     <div class="mb-3">
+        <label for="{{form.title.id_for_label}}" class="form_label">Заголовок: </label>
+        {{ form.title }}
+        <div class="invalid-feedback">
+            {{ form.title.errors }}
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="{{form.content.id_for_label}}" class="form_label">Описание: </label>
+        {{ form.content }}
+        <div class="invalid-feedback">
+            {{ form.content.errors }}
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="{{form.category.id_for_label}}" class="form_label">Категория: </label>
+        {{ form.category }}
+        <div class="invalid-feedback">
+            {{ form.category.errors }}
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="{{form.priority.id_for_label}}" class="form_label">Приоритет: </label>
+        {{ form.priority }}
+        <div class="invalid-feedback">
+            {{ form.priority.errors }}
+        </div>
+    </div>
+    <div class="mb-2">
+        <label for="{{form.completed.id_for_label}}" class="form_label">Статус задачи: </label>
+        {{ form.completed }}
+        <div class="invalid-feedback">
+            {{ form.completed.errors }}
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="{{form.completed_at.id_for_label}}" class="form_label">Дата завершения: </label>
+        {{ form.completed_at }}
+        <div class="invalid-feedback">
+            {{ form.completed_at.errors }}
+        </div>
+    </div>
+    </div>
+    {% endcomment %}
+
+
+    <button type="submit" class="btn btn-primary btn-block">Добавить</button>
+</form>
+
+{% endblock %}

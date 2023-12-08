@@ -1,0 +1,11 @@
+#header{
+    background: #9e0b74;
+}
+
+#branding h1 a:link, #branding h1 a:visited {
+    color: #ffbf1c;
+}
+
+div.breadcrumbs {
+    background: #e012cc;
+}

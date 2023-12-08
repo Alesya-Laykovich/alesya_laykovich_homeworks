@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block sidebar %}
+
+{% include 'inc/_sidebar.html' %}
+
+{% endblock %}
+
+{% block content %}
+<div class="col-md-8">
+                {% for item in taskmanager %}
+                <div class="card mb-3">
+                    <div class="card-header">
+                        Категория: {{ item.category }}
+                    </div>
+                    <div class="card-header">
+                        Приоритет: {{ item.priority }}
+                    </div>
+                    <div class="card-header">
+                        Статус задачи: {{ item.completed }}
+                    </div>
+                    <div class="card-header">
+                        Создатель: {{ item.user.username }}
+                    </div>
+                    <div class="card-body">
+                        <h2 class="card-title">{{ item.title }}</h2>
+                        {% autoescape off %}
+                        <p class="card-text">Описание: {{ item.content|linebreaks|truncatewords:50 }}</p>
+                        {% endautoescape %}
+                        <a href="{{ item.get_absolute_url }}" class="btn btn-primary">Открыть задачу</a>
+                        {% if request.user.is_authenticated %}
+                        {% comment %}
+                        <a href="{{ item.get_update_url }}" class="btn btn-outline-primary">Обновить</a>
+                        <a href="{{ item.get_absolute_url_favourite }}" class="btn btn-outline-primary">В избранное</a>
+                        <a href="#" class="btn btn-primary">Статус задачи: {{ item.completed }} </a>
+                        {% endcomment %}
+                        <a href="{{ item.get_absolute_url_delete }}" class="btn btn-danger">Удалить</a>
+                        {% endif%}
+
+
+                    </div>
+
+                    <div class="card-footer text-muted">
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+{% endblock %}

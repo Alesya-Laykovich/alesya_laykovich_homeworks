@@ -1,0 +1,48 @@
+{% load taskmanager_tags %}
+
+{% get_categories as categories %}
+{% get_completed as completed_s %}
+{% get_priorities as priorities %}
+{% get_favourite as favourites %}
+
+
+
+
+<div class="col-md-4">
+                <div class="card mb-3">
+                    <div class="card-header">Категория</div>
+                    <div class="list-group">
+                    {% for item in categories %}
+                    <a href="{% url 'category' item.pk %}" class="list-group-item list-group-item-action">{{ item.title }}</a>
+                    {% endfor %}
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="card mb-3">
+                        <div class="card-header">Приоритет</div>
+                        <div class="list-group">
+                            {% for item in priorities %}
+                            <a href="{% url 'priority' item.pk %}" class="list-group-item list-group-item-action">{{ item.title }}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="card mb-3">
+                        <div class="card-header">Статус задачи</div>
+                        <div class="list-group">
+                            {% for item in completed_s %}
+                            <a href="{% url 'completed_task' item.pk %}" class="list-group-item list-group-item-action">{{ item.title }}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-3">
+                    <div class="list-group">
+                    {% for item in favourites %}
+                    <a href="{% url 'favourite' item.pk %}" class="list-group-item list-group-item-action">{{ item.title }}</a>
+                    {% endfor %}
+                    </div>
+                </div>
+            </div>
+
